@@ -1,0 +1,19 @@
+[
+  {
+    "decision": "REJECTED",
+    "reason": "Gates failed: RMSE improvement +0.00 MW < 50.0 MW required",
+    "evaluated_at": "2026-06-13 08:50:20",
+    "challenger_name": "ElasticNet",
+    "challenger_rmse": 712.0369,
+    "challenger_r2": 0.9759,
+    "challenger_gap": 0.0498,
+    "champion_name": "ElasticNet",
+    "champion_rmse": 712.0369,
+    "champion_r2": 0.9759,
+    "gates": {
+      "rmse_improvement_passed": false,
+      "r2_passed": true,
+      "gap_passed": true
+    }
+  }
+]

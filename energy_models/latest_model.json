@@ -1,0 +1,4 @@
+{
+  "model_name": "energy_model_ElasticNet_v1.joblib",
+  "model_card_path": "energy_models\\model_card_ElasticNet_v1.json"
+}

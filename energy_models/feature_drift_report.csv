@@ -1,0 +1,67 @@
+feature,drift_score
+day_of_year,4.265955531552661
+month,3.8946900143810423
+month_sin,3.3690324684321595
+week_of_year,3.0152697041959664
+price_demand_ratio,2.305700790631081
+price_lag_1h,1.967835956410248
+price actual,1.9676315824081496
+price day ahead,1.371609986647194
+month_cos,1.1358508529310674
+temp_min,0.18306241447689758
+pressure,0.17157541530335815
+temp,0.12924692514087557
+temp_celsius,0.12924692514087557
+temp_max,0.09036327735332635
+heating_degree,0.07969291540768236
+renewable_penetration,0.06715131015063847
+price_change_1h,0.06608697893700477
+temp_x_hour,0.061142141821291136
+wind_speed,0.05898577955112383
+cooling_degree,0.049001937738569645
+renewable_total,0.04140915443988989
+forecast solar day ahead,0.040913549921767704
+demand_lag_1h,0.03002130344520139
+clouds_all,0.024187356398567332
+temp_x_peak,0.023198030489740024
+forecast wind onshore day ahead,0.021350907374507407
+humidity,0.012368836363778248
+demand_delta_1h,0.01048162389003478
+hour_cos,6.21771688691598e-07
+hour,5.898976621471211e-07
+hour_sin,3.3484962595067645e-07
+demand_roll_std_168h,0.0
+demand_roll_mean_6h,0.0
+is_peak_demand,0.0
+demand_roll_std_48h,0.0
+demand_roll_mean_168h,0.0
+demand_roll_mean_48h,0.0
+demand_roll_std_24h,0.0
+demand_roll_mean_24h,0.0
+demand_roll_std_12h,0.0
+demand_roll_mean_12h,0.0
+demand_roll_std_6h,0.0
+generation biomass,0.0
+demand_lag_168h,0.0
+generation other renewable,0.0
+generation fossil gas,0.0
+generation fossil hard coal,0.0
+generation fossil oil,0.0
+generation hydro pumped storage aggregated,0.0
+generation hydro pumped storage consumption,0.0
+generation hydro run-of-river and poundage,0.0
+generation hydro water reservoir,0.0
+generation nuclear,0.0
+generation other,0.0
+generation solar,0.0
+demand_lag_48h,0.0
+generation waste,0.0
+generation wind onshore,0.0
+forecast wind offshore eday ahead,0.0
+generation fossil brown coal/lignite,0.0
+demand_lag_2h,0.0
+demand_lag_3h,0.0
+demand_lag_6h,0.0
+demand_lag_12h,0.0
+demand_lag_24h,0.0
+demand_delta_24h,0.0

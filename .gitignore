@@ -1,0 +1,68 @@
+# ============================================================
+# .GITIGNORE — Energy Demand Forecasting ML System
+# ============================================================
+
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ──────────────────────────────────────
+venv/
+env/
+.venv/
+.env
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Model artifacts ───────────────────────────────────────────
+# .joblib pushed to GitHub so Render can load it at API startup
+# If file becomes too large (>100MB) switch to Git LFS
+# energy_models/*.joblib   ← intentionally NOT ignored
+
+# Keep all energy_models files — needed for Render (API) + Streamlit (dashboard)
+!energy_models/
+
+# ── Data ──────────────────────────────────────────────────────
+# Full dataset — never push (large files, download from Kaggle)
+data/energy_dataset.csv
+data/weather_features.csv
+data/*.zip
+
+# Sample files — push to GitHub (recruiters can see data structure)
+# data/sample_energy_dataset.csv    ← intentionally NOT ignored
+# data/sample_weather_features.csv  ← intentionally NOT ignored
+
+# ── Logs ──────────────────────────────────────────────────────
+# Keep prediction_logs.csv — Streamlit dashboard reads it
+logs/*
+!logs/prediction_logs.csv
+*.log
+
+# ── MLflow ────────────────────────────────────────────────────
+mlruns/
+mlartifacts/
+
+# ── Pytest ────────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
