@@ -8,7 +8,7 @@
 ![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Production-orange)
 ![Tests](https://img.shields.io/badge/Tests-54%20passing-brightgreen)
 ![MLflow](https://img.shields.io/badge/MLflow-Tracked-blue)
-![CI](https://github.com/YOUR_USERNAME/energy-demand-forecasting/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/narendrakalam2001/energy-demand-forecasting-mlops/actions/workflows/ci.yml/badge.svg)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
 
 Production-grade end-to-end machine learning system for **24-hour ahead electricity demand forecasting** on Spain's energy grid (ESIOS/REE data), with a **4-tier dispatch decision engine (NORMAL / MONITOR_HIGH / ACTIVATE_RESERVE / EMERGENCY_PROCUREMENT)**, Champion vs Challenger model governance, PSI drift monitoring, SHAP explainability, real-time FastAPI + Streamlit dashboard.
@@ -67,14 +67,14 @@ This project builds a complete **Grid-grade Energy Demand Forecasting System** u
 
 ## 🌐 Live Demo
 
-🚀 **Forecast API (Live)**
-👉 `https://energy-demand-forecast-api.onrender.com`
+🚀 **Credit Risk API (Live)**
+👉 [energy-demand-forecast-api.onrender.com](https://energy-demand-forecast-api.onrender.com)
 
 📊 **Monitoring Dashboard (Live)**
-👉 `https://YOUR-STREAMLIT-LINK.streamlit.app`
+👉 [energy-demand-forecasting-mlops.streamlit.app](https://energy-demand-forecasting-mlops.streamlit.app)
 
 📄 **API Docs (Swagger UI)**
-👉 `https://energy-demand-forecast-api.onrender.com/docs`
+👉 [energy-demand-forecast-api.onrender.com/docs](https://energy-demand-forecast-api.onrender.com/docs)
 
 ---
 
@@ -154,11 +154,11 @@ This project builds a complete **Grid-grade Energy Demand Forecasting System** u
 
 ### Forecast vs Actual — Scatter
 
-![Scatter](docs/plots/elasticnet_scatter.png)
+![Scatter](docs/plots/forecast_scatter.png)
 
 ### Forecast vs Actual + Residuals (First 500 hours)
 
-![Residuals](docs/plots/elasticnet_forecast_residuals.png)
+![Residuals](docs/plots/forecast_vs_actual.png)
 
 ---
 
@@ -404,11 +404,6 @@ data/sample_weather_features.csv
 
 Download Original Dataset from Kaggle: [Spain Energy Grid Data](https://www.kaggle.com/datasets/nicholasjhana/energy-consumption-generation-prices-and-weather)
 
-Place files in:
-```
-data/energy_dataset.csv
-data/weather_features.csv
-```
 
 ### 2. Train Model
 
@@ -546,29 +541,6 @@ energy-demand-forecasting/
 Python · Scikit-Learn · XGBoost · LightGBM · CatBoost · FastAPI · Streamlit ·
 SHAP · MLflow · Pytest · Pandas · NumPy · Seaborn · Docker · GitHub Actions CI/CD ·
 Render · Streamlit Cloud
-
----
-
-## 📊 Monitoring Dashboard Sections
-
-1. **🚨 Real-Time Alerts** — MAPE > 10%, RMSE > 3000 MW, PSI drift, emergency rate
-2. **🏆 Champion vs Challenger** — 3-gate promotion history + gate results
-3. **📊 Forecast KPIs + Charts** — RMSE, MAPE, forecast vs actual plot, dispatch distribution, demand band breakdown, error histogram
-4. **📉 PSI Drift Report** — Feature drift (train vs live) with 🔴🟡🟢 status
-5. **📋 Recent API Predictions** — Live prediction log table
-
----
-
-## 🌐 Live Demo
-
-🚀 **Forecast API (Live)**
-👉 `https://energy-demand-forecast-api.onrender.com`
-
-📊 **Monitoring Dashboard (Live)**
-👉 `https://YOUR-STREAMLIT-LINK.streamlit.app`
-
-📄 **API Docs (Swagger UI)**
-👉 `https://energy-demand-forecast-api.onrender.com/docs`
 
 ---
 
