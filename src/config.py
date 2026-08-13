@@ -56,6 +56,23 @@ MAX_GENERALIZATION_GAP  = 0.10    # train-test RMSE gap <= 10%
 LAG_HOURS   = [1, 2, 3, 6, 12, 24, 48, 168]   # 168 = 1 week
 ROLL_WINDOWS = [6, 12, 24, 48, 168]            # rolling mean/std windows
 
+# ── SARIMA / SARIMAX challenger ───────────────────────────────
+# Classical statistical time-series baseline, run alongside the
+# 13-model ML zoo as an additional challenger. See src/sarima_model.py
+# for why it gets a small curated exog set instead of the full
+# 60+ column engineered feature bank the ML models use.
+SARIMA_ORDER          = (1, 1, 1)          # (p, d, q)
+SARIMA_SEASONAL_ORDER = (1, 1, 1, 24)      # (P, D, Q, s) — s=24 = daily seasonality (hourly data)
+SARIMA_MAXITER        = 50                 # MLE fit iteration cap — keeps CV refits bounded
+SARIMA_EXOG_COLS = [
+    "temp_celsius",
+    "is_weekend",
+    "is_morning_peak",
+    "is_evening_peak",
+    "hour_sin", "hour_cos",
+    "dow_sin", "dow_cos",
+]
+
 # ── Paths ─────────────────────────────────────────────────────
 MODEL_DIR   = "energy_models"
 METRICS_LOG = "energy_models/metrics_log.csv"

@@ -14,6 +14,7 @@
 #   10. Tune scaled models (TimeSeriesSplit CV)
 #   11. Tune unscaled models
 #   12. Train MLP separately
+#   12b. Fit SARIMA challenger (classical time-series baseline)
 #   13. Evaluate all models
 #   14. Select best model
 #   15. Forecast + metrics on test set
@@ -50,6 +51,7 @@ from src.data_loader     import (validate_energy_data, validate_weather_data,
                                   detect_feature_types, get_demand_band)
 from src.preprocessing   import build_preprocessors, safe_k, time_series_split
 from src.model_tuning    import scaled_models, unscaled_models, tune_models, train_mlp_pipeline
+from src.sarima_model    import build_sarima_challenger, STATSMODELS_AVAILABLE
 from src.evaluation      import (evaluate_models, select_best_model,
                                   compute_feature_importance, compute_shap,
                                   save_model_and_card, mlflow_log_run)
@@ -198,6 +200,28 @@ def run_training():
     mlp_pipe = train_mlp_pipeline(X_train_fit, y_train_fit, pre_scaled)
 
     all_pipelines = {**scaled_pipelines, **unscaled_pipelines, "NeuralNet": mlp_pipe}
+
+    # ─────────────────────────────────────────────────────────
+    # 12b. SARIMA CHALLENGER (classical time-series baseline)
+    # ─────────────────────────────────────────────────────────
+    # Runs through the exact same evaluate_models() → select_best_model()
+    # → run_challenger_comparison() flow as every ML model above — no
+    # special-casing downstream. Small curated exog set (temperature +
+    # calendar) rather than the full engineered feature bank — see
+    # src/sarima_model.py for why. Fail-safe: if statsmodels is missing
+    # or MLE fails to converge, training continues without it (same
+    # pattern as the optional LightGBM/CatBoost imports above).
+    logger.info("=" * 60)
+    if STATSMODELS_AVAILABLE:
+        try:
+            logger.info("Fitting SARIMA challenger ...")
+            sarima_pipe = build_sarima_challenger(X_train_fit, y_train_fit)
+            all_pipelines["SARIMA"] = sarima_pipe
+        except Exception as e:
+            logger.warning("SARIMA challenger fit failed — excluded from this run: %s", e)
+    else:
+        logger.warning("statsmodels not installed — SARIMA challenger skipped. "
+                        "pip install statsmodels to enable it.")
 
     # ─────────────────────────────────────────────────────────
     # 13. EVALUATE ALL MODELS

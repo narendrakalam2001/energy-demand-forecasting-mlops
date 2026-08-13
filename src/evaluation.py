@@ -224,6 +224,16 @@ def compute_shap(pipe: Pipeline, X_train, X_explain, max_explain: int = 500) -> 
         logger.info("SHAP not installed — skipping")
         return None
 
+    # Non-Pipeline estimators (e.g. the SARIMA challenger, which is a plain
+    # sklearn-compatible wrapper around statsmodels, not a
+    # preprocessor→selector→classifier Pipeline) don't have named_steps and
+    # aren't tree/kernel-explainable the same way. Skip cleanly rather than
+    # crashing training if SARIMA ever wins the champion gate.
+    if not hasattr(pipe, "named_steps"):
+        logger.info("SHAP skipped — '%s' is not a sklearn Pipeline (no named_steps)",
+                    type(pipe).__name__)
+        return None
+
     # Pipeline step is named "classifier" (just a key — works for any estimator type)
     clf = pipe.named_steps["classifier"]
     pre = pipe.named_steps["preprocessor"]
@@ -320,6 +330,13 @@ def mlflow_log_run(
         return
 
     try:
+        # FIX: newer MLflow versions put the plain filesystem tracking
+        # backend ("./mlruns") into maintenance mode and refuse to log new
+        # runs against it (raises MlflowException). Point at a local sqlite
+        # DB instead — still fully local, no server needed, just a
+        # supported backend. Safe to call every run; MLflow reuses the
+        # existing mlflow.db file if present.
+        mlflow.set_tracking_uri("sqlite:///mlflow.db")
         mlflow.set_experiment("energy_demand_experiments")
 
         metrics_dict = model_card.get("metrics", model_card)

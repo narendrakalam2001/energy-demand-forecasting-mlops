@@ -18,6 +18,9 @@ xgboost
 lightgbm
 catboost
 
+# Classical time-series baseline (SARIMA/SARIMAX challenger)
+statsmodels
+
 # Serialization
 joblib
 

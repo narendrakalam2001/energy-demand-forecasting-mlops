@@ -15,5 +15,11 @@ scikit-learn==1.3.2
 xgboost
 lightgbm
 
+# Only actually exercised if SARIMA ever wins the champion gate — kept here
+# so the API can still unpickle/predict with it if that happens. See
+# README "SARIMA Serving Caveat" for why single-hour SARIMA serving is
+# architecturally different from the other models regardless.
+statsmodels
+
 joblib
 requests
